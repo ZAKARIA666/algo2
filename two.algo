@@ -1,0 +1,48 @@
+FUNCTION pairs() : INTEGER;
+VAR
+    n :INTEGER:=0,
+BEGIN
+    REPEAT
+        read(n);
+    UNTIL (n>0)
+    RETURN n;
+END
+PROCEDURE fillarr(a:INTEGER, var arr : ARRAY_OF FLOAT;)
+VAR
+    i :INTEGER;
+    par:STRING:="xyz";
+BEGIN
+    FOR i FROM 0 TO 2 STEP 1 DO
+        write(par[i],a,":")
+        read(arr[i]);
+    END_FOR
+END
+FUNCTION dotpro(arrA,arrB:ARRAY_OF FLOAT) :FLOAT;
+VAR
+    dotp:FLOAT;
+BEGIN
+    FOR j FROM 0 TO 2 STEP 1 DO
+        dotp:=dotp+arrA[j]+arrB[j];
+    END_FOR
+    RETURN dotp ;
+END
+ALGORITHM dot_product
+VAR
+    arrA ,arrB : ARRAY_OF FLOAT[3];
+    n ,i,j :INTEGER;
+BEGIN
+    n:=pairs();
+    FOR k FROM 1 TO n STEP 1 DO
+        write ("pair number",k);
+        fillarr(1,arrA);
+        fillarr(2,arrB);
+        j:=dotpro(arrA,arrB);
+        IF (j=0) THEN
+            write("the vectors are orthogonal ,dot product= ",j);
+        ELSE
+            write("the vectors are not orthogonal ,dot product= ",j);
+        END_IF
+        j:=0;
+    END_FOR
+
+END
